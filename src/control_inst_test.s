@@ -46,9 +46,9 @@ PASS2:
 	nop                     // x3 should equal to 1 since the branch beforehand was not taken
  	nop						// check here to ensure that x4 and x5 are not set, if set,
 	nop						//      instruction in ID or EX stage was not cleared (NOP)
-	nop						// If halts here, both positive and negative offset branches successful
-	nop
-	nop
+	nop						//      if x4 = 1, IDEX was not cleared to make a NOP bubble in EX stage
+	nop                     //      if X5 = 1, EXMEM was not cleared to make a NOP bubble in MEM stage
+	nop                     // If halts here, both positive and negative offset branches successful
 	halt
 /**************************************************************************
  * Simple Jump instruction tests
