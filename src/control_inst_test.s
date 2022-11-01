@@ -49,7 +49,7 @@ PASS2:
 	nop						//      if x4 = 1, IDEX was not cleared to make a NOP bubble in EX stage
 	nop                     //      if X5 = 1, EXMEM was not cleared to make a NOP bubble in MEM stage
 	nop                     // If halts here, both positive and negative offset branches successful
-	halt
+	# halt
 /**************************************************************************
  * Simple Jump instruction tests
  **************************************************************************/
@@ -144,13 +144,13 @@ JUMP1:
 	nop
 	nop                 // x3 = return address saved
 	nop
-	bne	x3, x2, FAIL		// x2 = RETURN1.  Branch if not equal to fail
+	bne	x3, x2, FAIL		// x2 = RETURN1.  Validates proper return address saved in x1
 	nop
 	nop
 	nop
 	nop
 	nop
-	jalr x1, 0(x1)				// Use return address saved from the jump to JUMP1
+	jalr x1, 0(x1)			// Use return address saved from the jump to JUMP1
 
 FAIL:
 	nop
